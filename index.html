@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="KF Store — Moda Masculina. Streetwear premium em Agudos, SP.">
+  <meta property="og:title" content="KF Store — Moda Masculina">
+  <meta property="og:description" content="Vista o que é seu. Moda streetwear masculina em Agudos, SP.">
+  <meta property="og:image" content="logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>KF Store — Moda Masculina</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="shortcut icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* === VARIÁVEIS E RESET === */
+    :root {
+      --cyan-neon: #0BDFFF;
+      --blue-electric: #1A6EFF;
+      --menu-bg: #0A0A0F;
+      --menu-text: #FFFFFF;
+      --bg-main: #000000;
+      --surface: #0A0A0A;
+      --surface-muted: #111111;
+      --border: #222222;
+      --border-strong: #333333;
+      --text-primary: #FFFFFF;
+      --text-secondary: #AAAAAA;
+      --green-stock: #22c55e;
+      --yellow-stock: #eab308;
+      --red-stock: #ef4444;
+      --font-heading: 'Bebas Neue', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, select {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* === MENU / HEADER (única área escura) === */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--menu-bg);
+      border-bottom: 2px solid var(--cyan-neon);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 1rem;
+      gap: 1rem;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .header-logo {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .header-name {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      letter-spacing: 0.06em;
+      color: var(--menu-text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .header-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .header-link:hover,
+    .header-link.active {
+      color: var(--cyan-neon);
+      background: rgba(11, 223, 255, 0.1);
+    }
+
+    .header-admin-link {
+      font-size: 0.75rem;
+      color: var(--menu-bg);
+      background: var(--cyan-neon);
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .header-admin-link:hover {
+      opacity: 0.85;
+    }
+
+    /* === BANNER TOPO (fundo branco) === */
+    .shop-banner {
+      background: var(--bg-main);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 1rem 1rem;
+      text-align: center;
+    }
+
+    .shop-banner-tagline {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 0.35rem;
+    }
+
+    .shop-banner-logo {
+      width: min(200px, 55vw);
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* === LAYOUT CATÁLOGO (estilo offstore) === */
+    .shop-page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding-top: 1.5rem;
+    }
+
+    /* === SIDEBAR CATEGORIAS (desktop) === */
+    .catalog-sidebar {
+      position: sticky;
+      top: 72px;
+    }
+
+    .sidebar-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 0.85rem;
+    }
+
+    .sidebar-categories {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .sidebar-cat-btn {
+      width: 100%;
+      text-align: left;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .sidebar-cat-btn:hover {
+      background: var(--surface-muted);
+    }
+
+    .sidebar-cat-btn.active {
+      background: rgba(11, 223, 255, 0.12);
+      color: #0099bb;
+      font-weight: 600;
+    }
+
+    /* === CATEGORIAS MOBILE (scroll horizontal) === */
+    .mobile-categories {
+      display: none;
+      position: sticky;
+      top: 58px;
+      z-index: 150;
+      background: var(--bg-main);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 0;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+    }
+
+    .mobile-cat-scroll {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-right: 1rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .mobile-cat-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-cat-btn {
+      flex-shrink: 0;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--surface-muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .mobile-cat-btn.active {
+      background: var(--menu-bg);
+      color: var(--cyan-neon);
+      border-color: var(--menu-bg);
+    }
+
+    /* === ÁREA PRINCIPAL DO CATÁLOGO === */
+    .catalog-main {
+      min-width: 0;
+    }
+
+    .catalog-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .catalog-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+    }
+
+    .catalog-sort {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sort-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .sort-select {
+      padding: 0.5rem 2rem 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-primary);
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6B7B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.6rem center;
+      min-width: 140px;
+    }
+
+    .catalog-count {
+      width: 100%;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .catalog-toolbar .live-badge {
+      margin-left: 0;
+    }
+
+    /* === GRID DE PRODUTOS === */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 480px) {
+      .products-grid {
+        gap: 1rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.25s ease;
+    }
+
+    .product-card.hidden {
+      display: none;
+    }
+
+    .product-card.fade-out {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    .product-card.sold-out {
+      opacity: 0.72;
+    }
+
+    .product-card:not(.sold-out):hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--surface-muted);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .product-card:not(.sold-out):hover .product-image {
+      transform: scale(1.03);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      padding: 0.25rem 0.45rem;
+      border-radius: 4px;
+      max-width: calc(100% - 1rem);
+      line-height: 1.2;
+    }
+
+    .badge-in-stock {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--green-stock);
+    }
+
+    .badge-low-stock {
+      background: rgba(234, 179, 8, 0.2);
+      color: var(--yellow-stock);
+    }
+
+    .badge-out-of-stock {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--red-stock);
+    }
+
+    .product-info {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+    }
+
+    @media (min-width: 480px) {
+      .product-info {
+        padding: 0.85rem;
+      }
+    }
+
+    .product-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text-primary);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.2em;
+    }
+
+    @media (min-width: 480px) {
+      .product-name {
+        font-size: 0.875rem;
+      }
+    }
+
+    .product-category-tag {
+      font-size: 0.68rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .product-price {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 0.15rem;
+    }
+
+    .product-whatsapp-btn {
+      margin-top: 0.5rem;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #25D366;
+      color: #fff;
+      border-radius: 6px;
+      text-align: center;
+      transition: opacity 0.2s, transform 0.15s;
+      line-height: 1.2;
+    }
+
+    @media (min-width: 480px) {
+      .product-whatsapp-btn {
+        font-size: 0.78rem;
+        padding: 0.7rem 0.75rem;
+      }
+    }
+
+    .product-whatsapp-btn:hover:not(:disabled) {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .product-whatsapp-btn:disabled {
+      background: var(--border-strong);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+    }
+
+    .product-view-btn {
+      margin-top: 0.5rem;
+      padding: 0.65rem 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--menu-bg);
+      color: var(--cyan-neon);
+      border-radius: 6px;
+      text-align: center;
+      transition: opacity 0.2s, transform 0.15s;
+      line-height: 1.2;
+      width: 100%;
+    }
+
+    @media (min-width: 480px) {
+      .product-view-btn {
+        font-size: 0.78rem;
+        padding: 0.7rem 0.75rem;
+      }
+    }
+
+    .product-view-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .product-view-btn.disabled {
+      background: var(--border-strong);
+      color: var(--text-secondary);
+      pointer-events: none;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-secondary);
+      background: var(--surface-muted);
+      border-radius: 10px;
+      border: 1px dashed var(--border-strong);
+    }
+
+    .empty-state p {
+      font-size: 0.95rem;
+    }
+
+    /* === RODAPÉ === */
+    .site-footer {
+      background: var(--surface-muted);
+      border-top: 1px solid var(--border);
+      padding: 2rem 1rem;
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+      }
+    }
+
+    .footer-block h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 0.65rem;
+    }
+
+    .footer-block p,
+    .footer-block a {
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .footer-block a:hover {
+      color: #0099bb;
+    }
+
+    .footer-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .footer-instagram svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 1.5rem auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* === RESPONSIVO MOBILE === */
+    @media (max-width: 767px) {
+      .shop-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-top: 0.75rem;
+      }
+
+      .catalog-sidebar {
+        display: none;
+      }
+
+      .mobile-categories {
+        display: block;
+      }
+
+      .header-name {
+        font-size: 1.1rem;
+      }
+
+      .header-logo {
+        height: 36px;
+      }
+
+      .catalog-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .catalog-sort {
+        justify-content: space-between;
+      }
+
+      .sort-select {
+        flex: 1;
+        max-width: 180px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .products-grid {
+        gap: 0.5rem;
+      }
+
+      .product-info {
+        padding: 0.6rem;
+      }
+
+      .product-name {
+        font-size: 0.78rem;
+      }
+
+      .product-price {
+        font-size: 0.85rem;
+      }
+
+      .product-whatsapp-btn {
+        font-size: 0.68rem;
+        padding: 0.55rem 0.4rem;
+      }
+
+      .header-inner {
+        padding: 0.55rem 0.75rem;
+      }
+    }
+
+    /* === VISIBILIDADE DE VIEWS === */
+    .view-hidden {
+      display: none !important;
+    }
+
+    .product-card {
+      cursor: pointer;
+    }
+
+    .product-card .product-whatsapp-btn {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* === PÁGINA DO PRODUTO (estilo offstore) === */
+    .product-page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1rem 3rem;
+    }
+
+    .product-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      padding: 0.35rem 0;
+      transition: color 0.2s;
+    }
+
+    .product-back:hover {
+      color: var(--text-primary);
+    }
+
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .product-detail-gallery {
+      background: var(--surface-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      position: sticky;
+      top: 80px;
+    }
+
+    .product-detail-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-detail-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      padding-top: 0.5rem;
+    }
+
+    .pd-category {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+    }
+
+    .pd-name {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 5vw, 2.5rem);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    .pd-price {
+      font-family: var(--font-mono);
+      font-size: clamp(1.35rem, 4vw, 1.75rem);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .pd-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .pd-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0.5rem 0;
+    }
+
+    .pd-qty-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .pd-qty-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .pd-qty-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .pd-qty-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      background: var(--surface-muted);
+      transition: background 0.2s;
+    }
+
+    .pd-qty-btn:hover:not(:disabled) {
+      background: var(--border);
+    }
+
+    .pd-qty-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .pd-qty-value {
+      width: 48px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-left: 1px solid var(--border-strong);
+      border-right: 1px solid var(--border-strong);
+      line-height: 40px;
+    }
+
+    .pd-buy-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: center;
+      background: #25D366;
+      color: #fff;
+      border-radius: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 0.25rem;
+    }
+
+    .pd-buy-btn:hover:not(.disabled) {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .pd-buy-btn.disabled {
+      background: var(--border-strong);
+      color: var(--text-secondary);
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+
+    .pd-share-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .pd-share-btn:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-primary);
+    }
+
+    .pd-share-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .pd-description-section {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .pd-description-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      margin-bottom: 0.85rem;
+    }
+
+    .pd-description-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+
+    /* === SELETOR DE TAMANHO === */
+    .pd-sizes-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .pd-sizes-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .pd-sizes-hint {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    .pd-sizes-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pd-size-btn {
+      min-width: 44px;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: var(--surface);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 6px;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .pd-size-btn:hover {
+      border-color: var(--text-secondary);
+    }
+
+    .pd-size-btn.active {
+      background: var(--menu-bg);
+      color: var(--cyan-neon);
+      border-color: var(--menu-bg);
+    }
+
+    .pd-size-error {
+      font-size: 0.75rem;
+      color: var(--red-stock);
+      min-height: 1em;
+    }
+
+    .product-card-sizes {
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+    }
+
+    /* === INDICADOR AO VIVO === */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--green-stock);
+      padding: 0.25rem 0.55rem;
+      background: rgba(34, 197, 94, 0.2);
+      border-radius: 999px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .live-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--green-stock);
+      border-radius: 50%;
+      animation: livePulse 1.5s ease-in-out infinite;
+    }
+
+    .live-badge.offline {
+      color: var(--text-secondary);
+      background: var(--surface-muted);
+    }
+
+    .live-badge.offline::before {
+      background: var(--text-secondary);
+      animation: none;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .store-loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
+    }
+
+    .store-error-banner {
+      background: rgba(239, 68, 68, 0.2);
+      border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--red-stock);
+      padding: 0.65rem 1rem;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .pd-size-btn.out-of-stock {
+      opacity: 0.35;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+
+    .pd-unavailable {
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .pd-unavailable h2 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pd-unavailable p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .pd-unavailable a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--menu-bg);
+      color: var(--cyan-neon);
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 767px) {
+      .product-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .product-detail-gallery {
+        position: static;
+        border-radius: 10px;
+      }
+
+      .product-detail-info {
+        padding-top: 0;
+      }
+
+      .product-page-wrap {
+        padding-top: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- === MENU (área escura — cor da marca) === -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand" aria-label="KF Store — Início">
+        <img src="logo.png" alt="KF Store" class="header-logo" width="42" height="42">
+        <span class="header-name">KF STORE</span>
+      </a>
+      <nav class="header-nav">
+        <a href="index.html#produtos" class="header-link active" id="navLoja">Loja</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="store-error-banner view-hidden" id="storeErrorBanner"></div>
+
+  <!-- === BANNER === -->
+  <section class="shop-banner" id="shopBanner">
+    <img src="logo.png" alt="KF Store — Moda Masculina" class="shop-banner-logo">
+    <p class="shop-banner-tagline">Vista o que é seu. Moda que representa.</p>
+  </section>
+
+  <!-- === CATÁLOGO === -->
+  <div class="shop-page" id="catalogView">
+    <span id="produtos" style="position:absolute;margin-top:-80px;"></span>
+    <!-- Categorias mobile -->
+    <div class="mobile-categories">
+      <div class="mobile-cat-scroll" id="mobileCategoryTabs" role="tablist"></div>
+    </div>
+
+    <div class="shop-layout">
+      <!-- Sidebar desktop -->
+      <aside class="catalog-sidebar">
+        <div class="sidebar-block">
+          <h3 class="sidebar-title">Categorias</h3>
+          <ul class="sidebar-categories" id="sidebarCategories" role="tablist"></ul>
+        </div>
+      </aside>
+
+      <!-- Grid principal -->
+      <main class="catalog-main">
+        <div class="catalog-toolbar">
+          <h2 class="catalog-title" id="catalogTitle">Todos os produtos</h2>
+          <div class="catalog-sort">
+            <span class="sort-label">Ordenar por:</span>
+            <select class="sort-select" id="sortSelect" aria-label="Ordenar produtos">
+              <option value="default">Padrão</option>
+              <option value="price-asc">Menor preço</option>
+              <option value="price-desc">Maior preço</option>
+              <option value="name-asc">Nome A–Z</option>
+            </select>
+          </div>
+          <p class="catalog-count" id="catalogCount"></p>
+        </div>
+
+        <div class="products-grid" id="productsGrid" role="list"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- === PÁGINA DO PRODUTO === -->
+  <div id="productView" class="view-hidden">
+    <div class="product-page-wrap" id="productPageContent"></div>
+  </div>
+
+  <!-- === RODAPÉ === -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-grid">
+      <div class="footer-block">
+        <h4>Endereço</h4>
+        <p>Travessa Santa Rosa 62, Parque Pampulha<br>Agudos — SP</p>
+      </div>
+      <div class="footer-block">
+        <h4>Atendimento</h4>
+        <p>
+          <a href="https://wa.me/5514998260032" target="_blank" rel="noopener noreferrer">WhatsApp: (14) 99826-0032</a>
+        </p>
+      </div>
+      <div class="footer-block">
+        <h4>Redes</h4>
+        <a href="https://www.instagram.com/kf_store_00" target="_blank" rel="noopener noreferrer" class="footer-instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          @kf_store_00
+        </a>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2026 KF Store — Moda Masculina <br>Feito por Miguel Groutto</p>
+  </footer>
+
+  <!-- Firebase (nuvem — tempo real para todos os clientes) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="kfstore-db.js"></script>
+
+  <script>
+    /* === CONFIGURAÇÃO === */
+    const WHATSAPP_NUMBER = '5514998260032';
+
+    let activeCategory = 'Todos';
+    let sortOrder = 'default';
+    let allProducts = [];
+    let allCategories = [];
+    let currentProductId = null;
+    let productQty = 1;
+    let selectedSize = '';
+    let storeReady = false;
+
+    function getCategories() {
+      return allCategories;
+    }
+
+    function getProducts() {
+      return allProducts;
+    }
+
+    function getProductById(id) {
+      return allProducts.find(p => p.id === id && p.active);
+    }
+
+    function onStoreData(data) {
+      allCategories = data.categories;
+      allProducts = KFStoreDB.migrateProducts(data.products);
+      storeReady = true;
+      updateLiveBadge(data);
+      refreshCurrentView();
+    }
+
+    function updateLiveBadge(data) {
+      const badge = document.getElementById('liveBadge');
+      const errorBanner = document.getElementById('storeErrorBanner');
+      if (!badge) return;
+
+      const mode = data?.mode || KFStoreDB.getMode();
+      const error = data?.error || KFStoreDB.getConnectionError();
+
+      // Não exibe o banner de erro - a loja funciona perfeitamente no modo local
+      errorBanner.classList.add('view-hidden');
+
+      if (mode === 'cloud') {
+        badge.textContent = 'Ao vivo';
+        badge.classList.remove('offline');
+        badge.title = 'Catálogo sincronizado em tempo real';
+      } else {
+        badge.textContent = 'Modo local';
+        badge.classList.add('offline');
+        badge.title = 'Dados locais — configure o Firebase para sincronizar';
+      }
+    }
+
+    /* === UTILITÁRIOS === */
+    function formatPrice(value) {
+      return Number(value).toFixed(2).replace('.', ',');
+    }
+
+    function getTotalStock(product) {
+      return KFStoreDB.getTotalStock(product);
+    }
+
+    function getSizeStock(product, size) {
+      return KFStoreDB.getSizeStock(product, size);
+    }
+
+    function getStockBadge(product) {
+      const stock = getTotalStock(product);
+      if (stock <= 0) return { label: 'Esgotado', className: 'badge-out-of-stock' };
+      if (stock <= 3) return { label: 'Últimas unidades', className: 'badge-low-stock' };
+      return { label: 'Em estoque', className: 'badge-in-stock' };
+    }
+
+    function productHasSizes(product) {
+      return Array.isArray(product.sizes) && product.sizes.length > 0;
+    }
+
+    function formatSizesLabel(product) {
+      const available = KFStoreDB.getAvailableSizes(product);
+      if (!available.length) return productHasSizes(product) ? 'Consulte tamanhos' : '';
+      return available.join(' · ');
+    }
+
+    function buildWhatsAppMessage(product, qty = 1, size = '') {
+      const total = product.price * qty;
+      const lines = [
+        'Olá! Tenho interesse em um produto da *KF Store*:',
+        '',
+        `*Produto:* ${product.name}`,
+        `*Categoria:* ${product.category}`
+      ];
+
+      if (size) lines.push(`*Tamanho:* ${size}`);
+      if (qty > 1) lines.push(`*Quantidade:* ${qty} unidades`);
+
+      lines.push(`*Valor${qty > 1 ? ' total' : ''}:* R$ ${formatPrice(total)}`);
+      lines.push('');
+      lines.push('Ainda tem disponível?');
+
+      return lines.join('\n');
+    }
+
+    function buildWhatsAppUrl(product, qty = 1, size = '') {
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage(product, qty, size))}`;
+    }
+
+    function getProductShareUrl(id) {
+      const base = window.location.href.split('#')[0].split('?')[0];
+      return `${base}#produto/${id}`;
+    }
+
+    function sortProducts(products) {
+      const sorted = [...products];
+      switch (sortOrder) {
+        case 'price-asc': return sorted.sort((a, b) => a.price - b.price);
+        case 'price-desc': return sorted.sort((a, b) => b.price - a.price);
+        case 'name-asc': return sorted.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+        default: return sorted;
+      }
+    }
+
+    function getFilteredProducts() {
+      const active = allProducts.filter(p => p.active);
+      return sortProducts(active.filter(p => activeCategory === 'Todos' || p.category === activeCategory));
+    }
+
+    function updateCatalogTitle() {
+      document.getElementById('catalogTitle').textContent =
+        activeCategory === 'Todos' ? 'Todos os produtos' : activeCategory;
+    }
+
+    function updateCatalogCount(count) {
+      document.getElementById('catalogCount').textContent =
+        count === 0 ? 'Nenhum produto encontrado' :
+        count === 1 ? '1 produto encontrado' :
+        `${count} produtos encontrados`;
+    }
+
+    /* === NAVEGAÇÃO / ROTEAMENTO === */
+    function showCatalog(updateHash = true) {
+      currentProductId = null;
+      document.getElementById('catalogView').classList.remove('view-hidden');
+      document.getElementById('productView').classList.add('view-hidden');
+      document.getElementById('shopBanner').classList.remove('view-hidden');
+      document.title = 'KF Store — Moda Masculina';
+      if (updateHash) history.replaceState(null, '', '#produtos');
+      renderCategories();
+      renderProducts();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showProduct(id, updateHash = true) {
+      const product = getProductById(id);
+      if (!product) {
+        showProductNotFound();
+        return;
+      }
+
+      currentProductId = id;
+      productQty = 1;
+      selectedSize = '';
+
+      document.getElementById('catalogView').classList.add('view-hidden');
+      document.getElementById('productView').classList.remove('view-hidden');
+      document.getElementById('shopBanner').classList.add('view-hidden');
+      document.title = `${product.name} | KF Store`;
+
+      if (updateHash) history.replaceState(null, '', `#produto/${id}`);
+      renderProductDetail(product);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function showProductNotFound() {
+      currentProductId = null;
+      document.getElementById('catalogView').classList.add('view-hidden');
+      document.getElementById('productView').classList.remove('view-hidden');
+      document.getElementById('shopBanner').classList.add('view-hidden');
+      document.getElementById('productPageContent').innerHTML = `
+        <div class="pd-unavailable">
+          <h2>Produto não encontrado</h2>
+          <p>Este produto não existe ou foi removido da loja.</p>
+          <a href="index.html#produtos">Voltar à loja</a>
+        </div>
+      `;
+    }
+
+    function handleRoute() {
+      const match = window.location.hash.match(/^#produto\/(.+)$/);
+      if (match) {
+        showProduct(match[1], false);
+      } else {
+        showCatalog(false);
+      }
+    }
+
+    /* === TEMPO REAL (Firebase → todos os clientes) === */
+    function refreshCurrentView() {
+      if (!storeReady) return;
+
+      if (currentProductId) {
+        const product = getProductById(currentProductId);
+        if (!product) {
+          showProductNotFound();
+          return;
+        }
+        if (productQty > getSizeStock(product, selectedSize) && getSizeStock(product, selectedSize) > 0) {
+          productQty = getSizeStock(product, selectedSize);
+        } else if (!selectedSize && productQty > getTotalStock(product)) {
+          productQty = getTotalStock(product);
+        }
+        renderProductDetail(product);
+      } else {
+        renderCategories();
+        renderProducts();
+      }
+    }
+
+    /* === CATEGORIAS === */
+    function renderCategories() {
+      const categories = getCategories();
+      const allTabs = ['Todos', ...categories];
+
+      document.getElementById('sidebarCategories').innerHTML = allTabs.map(cat => `
+        <li>
+          <button class="sidebar-cat-btn${cat === activeCategory ? ' active' : ''}" data-category="${cat}" role="tab">${cat}</button>
+        </li>
+      `).join('');
+
+      document.querySelectorAll('.sidebar-cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectCategory(btn.dataset.category));
+      });
+
+      document.getElementById('mobileCategoryTabs').innerHTML = allTabs.map(cat => `
+        <button class="mobile-cat-btn${cat === activeCategory ? ' active' : ''}" data-category="${cat}" role="tab">${cat}</button>
+      `).join('');
+
+      document.querySelectorAll('.mobile-cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => selectCategory(btn.dataset.category));
+      });
+    }
+
+    function selectCategory(cat) {
+      activeCategory = cat;
+      renderCategories();
+      renderProducts();
+    }
+
+    /* === GRID DE PRODUTOS === */
+    function renderProductCard(product) {
+      const badge = getStockBadge(product);
+      const isSoldOut = getTotalStock(product) <= 0;
+
+      return `
+        <article class="product-card${isSoldOut ? ' sold-out' : ''}" role="listitem" data-id="${product.id}">
+          <div class="product-image-wrap" data-open-product="${product.id}">
+            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+            <span class="product-badge ${badge.className}">${badge.label}</span>
+          </div>
+          <div class="product-info" data-open-product="${product.id}">
+            <span class="product-category-tag">${product.category}</span>
+            <h3 class="product-name">${product.name}</h3>
+            ${formatSizesLabel(product) ? `<span class="product-card-sizes">${formatSizesLabel(product)}</span>` : ''}
+            <p class="product-price">R$ ${formatPrice(product.price)}</p>
+            <button type="button" class="product-view-btn${isSoldOut ? ' disabled' : ''}" data-view-product="${product.id}" ${isSoldOut ? 'disabled' : ''}>
+              ${isSoldOut ? 'Esgotado' : 'Ver produto'}
+            </button>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderProducts() {
+      const filtered = getFilteredProducts();
+      const grid = document.getElementById('productsGrid');
+
+      if (!storeReady) {
+        grid.innerHTML = '<div class="store-loading"><p>Carregando produtos...</p></div>';
+        return;
+      }
+
+      updateCatalogTitle();
+      updateCatalogCount(filtered.length);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="empty-state"><p>Nenhum produto encontrado nesta categoria.</p></div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(renderProductCard).join('');
+
+      grid.querySelectorAll('[data-view-product]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showProduct(btn.dataset.viewProduct);
+        });
+      });
+
+      grid.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('[data-view-product]')) return;
+          const id = card.dataset.id;
+          if (id) showProduct(id);
+        });
+      });
+    }
+
+    /* === PÁGINA DO PRODUTO === */
+    function getMaxQty(product) {
+      if (productHasSizes(product) && selectedSize) {
+        return getSizeStock(product, selectedSize);
+      }
+      return getTotalStock(product);
+    }
+
+    function renderProductDetail(product) {
+      const badge = getStockBadge(product);
+      const isSoldOut = getTotalStock(product) <= 0;
+      const hasSizes = productHasSizes(product);
+
+      if (hasSizes) {
+        if (selectedSize && getSizeStock(product, selectedSize) <= 0) selectedSize = '';
+        if (selectedSize && !product.sizes.includes(selectedSize)) selectedSize = '';
+      }
+
+      const sizesHtml = hasSizes ? `
+        <div class="pd-sizes-section">
+          <span class="pd-sizes-label">Tamanho</span>
+          <span class="pd-sizes-hint">${product.category === 'Tênis' ? 'Selecione a numeração disponível' : 'Selecione o tamanho disponível'}</span>
+          <div class="pd-sizes-grid" id="pdSizesGrid">
+            ${product.sizes.map(s => {
+              const sizeStock = getSizeStock(product, s);
+              const out = sizeStock <= 0;
+              return `<button type="button" class="pd-size-btn${selectedSize === s ? ' active' : ''}${out ? ' out-of-stock' : ''}" data-size="${s}" ${out ? 'disabled' : ''}>${s}${out ? '' : ''}</button>`;
+            }).join('')}
+          </div>
+          <span class="pd-size-error" id="pdSizeError"></span>
+        </div>
+      ` : '';
+
+      document.getElementById('productPageContent').innerHTML = `
+        <button type="button" class="product-back" id="pdBackBtn">← Voltar à loja</button>
+
+        <div class="product-detail-grid">
+          <div class="product-detail-gallery">
+            <img src="${product.image}" alt="${product.name}" class="product-detail-image" id="pdImage">
+          </div>
+
+          <div class="product-detail-info">
+            <span class="pd-category" id="pdCategory">${product.category}</span>
+            <h1 class="pd-name" id="pdName">${product.name}</h1>
+            <p class="pd-price" id="pdPrice">R$ ${formatPrice(product.price)}</p>
+            <span class="pd-badge product-badge ${badge.className}" id="pdBadge">${badge.label}</span>
+
+            <hr class="pd-divider">
+
+            ${sizesHtml}
+
+            ${!isSoldOut ? `
+              <div class="pd-qty-row">
+                <span class="pd-qty-label">Quantidade</span>
+                <div class="pd-qty-control">
+                  <button type="button" class="pd-qty-btn" id="pdQtyMinus" aria-label="Diminuir">−</button>
+                  <span class="pd-qty-value" id="pdQtyValue">${productQty}</span>
+                  <button type="button" class="pd-qty-btn" id="pdQtyPlus" aria-label="Aumentar">+</button>
+                </div>
+              </div>
+            ` : ''}
+
+            <a
+              href="${isSoldOut ? '#' : buildWhatsAppUrl(product, productQty, selectedSize)}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pd-buy-btn${isSoldOut ? ' disabled' : ''}"
+              id="pdBuyBtn"
+            >${isSoldOut ? 'Produto esgotado' : 'Comprar via WhatsApp'}</a>
+
+            <button type="button" class="pd-share-btn" id="pdShareBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Compartilhar produto
+            </button>
+          </div>
+        </div>
+
+        <section class="pd-description-section">
+          <h3 class="pd-description-title">Descrição</h3>
+          <p class="pd-description-text" id="pdDescription">${product.description || 'Sem descrição disponível.'}</p>
+        </section>
+      `;
+
+      document.getElementById('pdBackBtn').addEventListener('click', () => showCatalog());
+
+      const buyBtn = document.getElementById('pdBuyBtn');
+      const sizeErrorEl = document.getElementById('pdSizeError');
+
+      function updateBuyLink() {
+        if (isSoldOut) return;
+        buyBtn.href = buildWhatsAppUrl(product, productQty, selectedSize);
+      }
+
+      let updateQtyDisplay = () => {};
+
+      if (!isSoldOut) {
+        const minusBtn = document.getElementById('pdQtyMinus');
+        const plusBtn = document.getElementById('pdQtyPlus');
+        const qtyEl = document.getElementById('pdQtyValue');
+
+        updateQtyDisplay = function () {
+          const maxQty = getMaxQty(product);
+          if (maxQty <= 0) return;
+          if (productQty > maxQty) productQty = Math.max(1, maxQty);
+          qtyEl.textContent = productQty;
+          minusBtn.disabled = productQty <= 1;
+          plusBtn.disabled = productQty >= maxQty;
+          updateBuyLink();
+        };
+
+        minusBtn.addEventListener('click', () => {
+          if (productQty > 1) { productQty--; updateQtyDisplay(); }
+        });
+
+        plusBtn.addEventListener('click', () => {
+          if (productQty < getMaxQty(product)) { productQty++; updateQtyDisplay(); }
+        });
+
+        buyBtn.addEventListener('click', (e) => {
+          if (hasSizes && !selectedSize) {
+            e.preventDefault();
+            if (sizeErrorEl) sizeErrorEl.textContent = 'Selecione um tamanho disponível antes de comprar.';
+            return;
+          }
+          if (hasSizes && selectedSize && getSizeStock(product, selectedSize) <= 0) {
+            e.preventDefault();
+            if (sizeErrorEl) sizeErrorEl.textContent = 'Este tamanho está esgotado.';
+          }
+        });
+
+        updateQtyDisplay();
+      }
+
+      if (hasSizes) {
+        document.querySelectorAll('.pd-size-btn:not([disabled])').forEach(btn => {
+          btn.addEventListener('click', () => {
+            selectedSize = btn.dataset.size;
+            productQty = 1;
+            document.querySelectorAll('.pd-size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            if (sizeErrorEl) sizeErrorEl.textContent = '';
+            updateQtyDisplay();
+            updateBuyLink();
+          });
+        });
+      }
+
+      document.getElementById('pdShareBtn').addEventListener('click', async () => {
+        const url = getProductShareUrl(product.id);
+        const shareData = { title: product.name, text: `${product.name} — KF Store`, url };
+
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+          } else {
+            await navigator.clipboard.writeText(url);
+            alert('Link copiado para a área de transferência!');
+          }
+        } catch (err) {
+          if (err.name !== 'AbortError') {
+            prompt('Copie o link do produto:', url);
+          }
+        }
+      });
+    }
+
+    /* === ORDENAÇÃO === */
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      sortOrder = e.target.value;
+      renderProducts();
+    });
+
+    window.addEventListener('hashchange', handleRoute);
+
+    /* === INICIALIZAÇÃO === */
+    document.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('productsGrid').innerHTML =
+        '<div class="store-loading"><p>Carregando produtos...</p></div>';
+
+      await KFStoreDB.init();
+      KFStoreDB.subscribe(onStoreData);
+      handleRoute();
+    });
+  </script>
+</body>
+</html>
